@@ -1,0 +1,21 @@
+.profile__add-place-btn {
+  height: 50px;
+  max-width: 150px;
+  width: 100%;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  background-image: url(../../../images/add.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 22px 22px;
+  justify-self: end;
+}
+
+@media screen and (max-width: 580px) {
+  .profile__add-place-btn {
+    width: 80%;
+    min-width: 282px;
+    box-sizing: border-box;
+    background-size: 16px 16px;
+  }
+}

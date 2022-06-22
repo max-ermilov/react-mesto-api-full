@@ -1,0 +1,14 @@
+.form__submit-btn {
+  margin-top: 216px;
+  background: #ffffff;
+  border-radius: 2px;
+  color: #000000;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+  max-width: 358px;
+  min-height: 50px;
+}

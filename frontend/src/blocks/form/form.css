@@ -1,0 +1,9 @@
+.form {
+  background: #000;
+  color: #fff;
+  width: 100%;
+  max-width: 358px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

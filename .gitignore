@@ -16,3 +16,7 @@ node_modules
 
 # Env files
 .env
+
+# Build
+build
+dist

@@ -1,0 +1,24 @@
+.element__like-btn {
+  height: 22px;
+  width: 22px;
+  background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100%;
+  overflow: visible;
+}
+
+.element__like-btn:hover {
+  opacity: 0.5;
+}
+
+.element__like-btn_active {
+  background-image: url(../../../images/liked.svg);
+}
+
+@media screen and (max-width: 580px) {
+  .element__like-btn {
+    height: 23px;
+    width: 25px;
+  }
+}

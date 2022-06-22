@@ -1,0 +1,10 @@
+.page__header {
+  width: 88.125%;
+  max-width: 880px;
+}
+
+@media screen and (max-width: 580px) {
+  .page__header {
+    width: 100%;
+  }
+}
