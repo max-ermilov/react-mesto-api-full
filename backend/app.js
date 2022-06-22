@@ -4,12 +4,15 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
 
+const { PORT = 3000 } = process.env;
 const { NotFound } = require('./errors');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-const { PORT = 3000 } = process.env;
+
+app.use(requestLogger);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,8 +46,8 @@ app.use('/cards', require('./routes/cards'));
 
 app.use('*', (req, res, next) => next(new NotFound('Запрашиваемая страница не найдена')));
 
+app.use(errorLogger);
 app.use(errors());
-
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
 
