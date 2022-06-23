@@ -22,7 +22,7 @@ function Main({onAddPlace, onCardClick, onEditAvatar, onEditProfile, cards, onCa
           <div className="profile__content">
             <div className="profile__avatar-container">
               <div className="profile__avatar"
-                   style={{backgroundImage: `url('${userAvatar})`}}
+                   style={{backgroundImage: `url('${userAvatar}`}}
               />
               <button className="button profile__avatar-edit-btn"
                       aria-label="Редактировать аватар"

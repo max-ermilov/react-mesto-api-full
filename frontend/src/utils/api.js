@@ -1,7 +1,13 @@
 class Api {
-  constructor({baseUrl, headers}) {
-    this._headers = headers;
+  constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
+  }
+
+  get _headers() {
+    return {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    }
   }
 
   _checkResponse(res) {
@@ -65,10 +71,11 @@ class Api {
 
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-37',
-  headers: {
-    authorization: '55fe8030-1e94-4e27-b38e-835c06ad700c',
+  // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-37',
+  baseUrl: 'http://localhost:3000',
+  // headers: {
+    // authorization: '55fe8030-1e94-4e27-b38e-835c06ad700c',
     // authorization: '55fe8030-1e94-4e27-b38e-835c06ad700', //especially wrong token
-    'Content-Type': 'application/json',
-  },
+    // 'Content-Type': 'application/json',
+  // },
 });

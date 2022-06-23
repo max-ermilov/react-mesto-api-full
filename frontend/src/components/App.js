@@ -50,7 +50,7 @@ function App() {
       Promise.all([api.getProfile(), api.getInitialCards()])
         .then(([profileData, initialCards]) => {
           setCurrentUser(profileData);
-          setCards(initialCards);
+          setCards(initialCards.reverse());
           setPageIsLoading(false);
         })
         .catch((err) => {
@@ -114,7 +114,7 @@ function App() {
         .getUserCredentials(jwt)
         .then((res) => {
           if (res) {
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
             setLoggedIn(true);
           }
         })
@@ -129,7 +129,9 @@ function App() {
   }
 
   const handleCardLike = card => {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => {
+      return (i === currentUser._id)
+    });
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         const cardsAfterLike = cards.map((c) => c._id === card._id ? newCard : c);

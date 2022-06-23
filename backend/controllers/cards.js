@@ -7,7 +7,7 @@ const { prepareValidationMessage } = require('../utils');
 module.exports.getAllCards = (req, res, next) => {
   Card.find({})
     .populate('owner')
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send(cards))
     .catch((err) => next(err));
 };
 
@@ -15,7 +15,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ name, link, owner: req.user._id })
-    .then((card) => res.status(201).send({ data: card }))
+    .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequest(prepareValidationMessage(err)));
@@ -35,7 +35,7 @@ module.exports.deleteCard = (req, res, next) => {
         throw new Forbidden('Запрещено удалять чужую карточку');
       }
       return card.remove()
-        .then(() => res.send({ data: card }));
+        .then(() => res.send(card));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -55,7 +55,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFound('Карточка с указанным id не найдена.');
       }
-      return res.send({ data: card });
+      return res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -69,13 +69,14 @@ module.exports.dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $pull: { likes: req.user._id } },
+    // { $pull: { likes: req.user } },
     { new: true },
   )
     .then((card) => {
       if (!card) {
         throw new NotFound('Карточка с указанным id не найдена.');
       }
-      return res.send({ data: card });
+      return res.send(card);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
