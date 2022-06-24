@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -25,6 +26,12 @@ mongoose.connect('mongodb://localhost:27017/mestodb', { family: 4 }) // { family
   .catch((err) => {
     console.log('Не удалось подключиться к базе данных. Ошибка: ', err);
   });
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({

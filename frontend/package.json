@@ -26,7 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && scp -r ./build/* yermax@51.250.111.162:/home/yermax/react-mesto-api-full/frontend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

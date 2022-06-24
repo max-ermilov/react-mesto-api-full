@@ -1,3 +1,5 @@
+import { BASE_URL } from '../constants/constants';
+
 class Api {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
@@ -71,11 +73,5 @@ class Api {
 
 
 export const api = new Api({
-  // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-37',
-  baseUrl: 'http://localhost:3000',
-  // headers: {
-    // authorization: '55fe8030-1e94-4e27-b38e-835c06ad700c',
-    // authorization: '55fe8030-1e94-4e27-b38e-835c06ad700', //especially wrong token
-    // 'Content-Type': 'application/json',
-  // },
+  baseUrl: BASE_URL,
 });
