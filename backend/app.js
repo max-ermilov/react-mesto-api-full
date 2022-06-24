@@ -13,8 +13,12 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-
-app.use(cors());
+const corsOptions = {
+  origin: 'https://safeplace.nomoredomains.xyz',
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 app.use(requestLogger);
 
