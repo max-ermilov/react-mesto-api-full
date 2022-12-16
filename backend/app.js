@@ -14,7 +14,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 const corsOptions = {
-  origin: 'https://safeplace.nomoredomains.xyz',
+  origin: 'https://mestoapp.gore.moe',
   optionsSuccessStatus: 200,
   credentials: true,
 };

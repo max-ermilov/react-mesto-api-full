@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/max-ermilov/react-mesto-auth/issues"
   },
-  "homepage": "https://safeplace.nomoredomains.xyz",
+  "homepage": "https://mestoapp.gore.moe",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
